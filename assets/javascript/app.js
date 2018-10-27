@@ -13,7 +13,15 @@
   var database = firebase.database();
   
   database.ref().on("value", function(snapshot) {
-  
+    let employeeName = snapshot.val().name;
+    let employeeRole = snapshot.val().role;
+    let employeeStartData = snapshot.val().startDate;
+    let employeeRate = snapshot.val().rate;
+
+    $(`#employee-name`).text(employeeName);
+    $(`#employee-role`).text(employeeRate);
+    $(`#employee-start-date`).text(employeeStartData);
+    $(`#employee-rate`).text(employeeRate);
   });
 
   $( document ).ready(function() {
