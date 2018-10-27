@@ -15,18 +15,33 @@
   database.ref().on("value", function(snapshot) {
   
   });
-  
-  $("#submift").on("click", function(event) {
-    event.preventDefault();
 
-    // usersRef.child("alanisawesome").set({
-    //     date_of_birth: "June 23, 1912",
-    //     full_name: "Alan Turing"
-    //   });
-    //   usersRef.child("gracehop").set({
-    //     date_of_birth: "December 9, 1906",
-    //     full_name: "Grace Hopper"
-    //   });
+  $( document ).ready(function() {
+    $("#submit-button").on("click", function() {
+      event.preventDefault();
 
+      let name;
+      let role;
+      let startDate;
+      let rate;
+
+      name = $('#employee-name').val();
+      role = $('#employee-role').val();
+      startDate = $('#employee-start-date').val();
+      rate = $('#employee-rate').val();
+
+      console.log(name, role, startDate, rate);
+
+      // Code for handling the push
+      database.ref().push({
+        name: name,
+        role: role,
+        startDate: startDate,
+        rate: rate,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+
+
+    });
   });
   
