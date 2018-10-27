@@ -15,55 +15,69 @@
 </head>
 
 <body>
-
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="jumbotron bg-dark text-white text-center">
-                    <h1 class="display-4">Employee Tracker</h1>
-                    <p class="lead">A Comprehensive Directory of Employee Billable Hours</p>
-                </div>
-                <div class="card">
-                    <div class="container">
-                        <div class="row">
-                            <h5 class="card-header">Current Employee</h5>
-                            <div class="card-body">
-                                <div class="col-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        Add Employee
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="employee-name">Employee Name:</label>
-                                <input class="form-control" type="text" id="employee-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="employee-role">Employee Role:</label>
-                                <input class="form-control" type="text" id="employee-role">
-                            </div>
-                            <div class="form-group">
-                                <label for="employee-start-date">Start Date (MM/DD/YYYY)</label>
-                                <input class="form-control" type="text" id="employee-start-date">
-                            </div>
-                            <div class="form-group">
-                                <label for="employee-rate">Monthly Rate:</label>
-                                <input class="form-control" type="text" id="employee-rate">
-                            </div>
-                            <button id="submit-button" class="btn btn-info">Submit</button>
-                        </form>
 
+        <div class="jumbotron text-center text-white bg-dark">
+            <h1 class="text-center">Employee Data Management</h1>
+            <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+        </div>
+
+        <div class="row">
+      
+            <div class="col">
+                
+                <!-- Current Employees-->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"><strong>Current Employees</strong></h3>
                     </div>
+                <div class="card-body">
+                    <table class="table table-hover" id='employee-table'>
+                    <thead>
+                        <tr>
+                        <th>Employee Name</th>
+                        <th>Role</th>
+                        <th>Start Date</th>
+                        <th>Months Worked</th>
+                        <th>Monthly Rate ($)</th>
+                        <th>Total Billed ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add Employee  -->
+            <div class="card card-primary">
+                <div class="card-header">
+                     <h3 class="card-title"><strong>Add Employee</strong></h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="employee-name">Employee Name:</label>
+                            <input class="form-control" type="text" id="employee-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="employee-role">Employee Role:</label>
+                            <input class="form-control" type="text" id="employee-role">
+                        </div>
+                        <div class="form-group">
+                            <label for="employee-start-date">Start Date (MM/DD/YYYY)</label>
+                            <input class="form-control" type="text" id="employee-start-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="employee-rate">Monthly Rate:</label>
+                            <input class="form-control" type="text" id="employee-rate">
+                        </div>
+                        <button id="submit-button" class="btn btn-info">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
