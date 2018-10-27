@@ -12,16 +12,33 @@
   // Create a variable to reference the database
   var database = firebase.database();
   
-  database.ref().on("value", function(snapshot) {
-    let employeeName = snapshot.val().name;
-    let employeeRole = snapshot.val().role;
-    let employeeStartData = snapshot.val().startDate;
-    let employeeRate = snapshot.val().rate;
+  database.ref().on("child_added", function(childSnapshot) {
+    let employeeName = childSnapshot.val().name;
+    let employeeRole = childSnapshot.val().role;
+    let employeeStartData = childSnapshot.val().startDate;
+    let employeeRate = childSnapshot.val().rate;
 
-    $(`#employee-name`).text(employeeName);
-    $(`#employee-role`).text(employeeRate);
-    $(`#employee-start-date`).text(employeeStartData);
-    $(`#employee-rate`).text(employeeRate);
+    let newRow = $(`<tr>`);
+
+    let newName = $(`<td>`);
+    newName.text(employeeName);
+
+    let newRole = $(`<td>`);
+    newRole.text(employeeRole);
+
+    let newStartDate = $(`<td>`);
+    newStartDate.text(employeeStartData);
+
+    let newRate = $(`<td>`);
+    newRate.text(employeeRate);
+
+    newRow.append(newName,newRole,newStartDate,newRate);
+    $(`tbody`).append(newRow);
+
+    // $(`#employee-name`).text(employeeName);
+    // $(`#employee-role`).text(employeeRole);
+    // $(`#employee-start-date`).text(employeeStartData);
+    // $(`#employee-rate`).text(employeeRate);
   });
 
   $( document ).ready(function() {
