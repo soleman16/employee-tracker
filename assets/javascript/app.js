@@ -15,8 +15,12 @@
   database.ref().on("child_added", function(childSnapshot) {
     let employeeName = childSnapshot.val().name;
     let employeeRole = childSnapshot.val().role;
-    let employeeStartData = childSnapshot.val().startDate;
+    let employeeStartDate = childSnapshot.val().startDate;
     let employeeRate = childSnapshot.val().rate;
+
+    var ts = moment(employeeStartDate, "M/D/YYYY").valueOf();
+    let monthsWorked = Math.floor(moment(moment(new Date())).diff(moment(ts), 'months', true));
+    let totalBilled = employeeRate * monthsWorked;
 
     let newRow = $(`<tr>`);
 
@@ -27,17 +31,23 @@
     newRole.text(employeeRole);
 
     let newStartDate = $(`<td>`);
-    newStartDate.text(employeeStartData);
+    newStartDate.text(employeeStartDate);
+
+    let newMonthsWorked = $(`<td>`);
+    newMonthsWorked.text(monthsWorked);  
 
     let newRate = $(`<td>`);
-    newRate.text(employeeRate);
+    newRate.text(employeeRate);    
+    
+    let newTotal = $(`<td>`);
+    newTotal.text(totalBilled);
 
-    newRow.append(newName,newRole,newStartDate,newRate);
+    newRow.append(newName,newRole,newStartDate,newMonthsWorked, newRate, newTotal);
     $(`tbody`).append(newRow);
 
     // $(`#employee-name`).text(employeeName);
     // $(`#employee-role`).text(employeeRole);
-    // $(`#employee-start-date`).text(employeeStartData);
+    // $(`#employee-start-date`).text(employeeStartDate);
     // $(`#employee-rate`).text(employeeRate);
   });
 
